@@ -1,2 +1,2 @@
 # fullstack
-Fillstack Open 2019 harjoitukset
+Fullstack Open 2019 harjoitukset
