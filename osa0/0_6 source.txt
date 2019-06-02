@@ -1,0 +1,27 @@
+
+note over selain:
+
+selain suorittaa js-koodin onsubmit tapahtumakäsittelijän
+
+joka lisää uuden muistiinpanon paikalliseen taulukkoon ja 
+piirtää ruudun sisällön uudelleen
+
+Tämän jälkeen js-koodi lähettää uuden muistiinpanon palvelimelle
+
+end note
+
+
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+
+
+note over palvelin:
+
+palvelin tallentaa JSON-muotoisen muistiinpanon
+
+end note
+
+
+
+palvelin-->selain: statuskoodi 201 created
