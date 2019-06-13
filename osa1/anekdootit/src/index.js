@@ -31,6 +31,8 @@ const App = (props) => {
         setPoints(copy)
         setHighest(maxIndex)
         //console.log('Vote: ', copy)    
+        
+        
     }
 
     return (
