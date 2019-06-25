@@ -4,11 +4,35 @@ import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import personService from './services/persons'
 
+const Notification = ({ message, type }) => {
+    if (message === null) {
+      return null
+    }
+    
+    if (type === 'notification'){
+        return (
+        <div className="notification">
+            {message}
+        </div>
+    )}
+    else if (type === 'error'){
+        return (
+        <div className="error">
+            {message}
+        </div>
+    )}
+
+  }
+
+
 const App = () => {
     const [ persons, setPersons] = useState([]) 
     const [ newName, setNewName ] = useState('')
     const [ newNumber, setNewNumber ] = useState('')
     const [ listFilter, setListFilter ] = useState('')
+    const [notificationMessage, setNotificationMessage] = useState(null)
+    const [notificationType, setNotificationType] = useState('notification')
+
 
     const hook = () => {
         //console.log('effect')
@@ -35,6 +59,11 @@ const App = () => {
             personService
                 .create(nameObject)
                 .then(response => {
+                    setNotificationType('notification')
+                    setNotificationMessage(`Added ${response.name}`)
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                      }, 3000)
                     setPersons(persons.concat(response))
                     setNewName('')
                     setNewNumber('')
@@ -50,10 +79,26 @@ const App = () => {
                 personService
                     .update(id, nameObject)
                     .then(response => {
+                        setNotificationType('notification')
+                        setNotificationMessage(`Updated ${response.name} to ${response.number}`)
+                        setTimeout(() => {
+                            setNotificationMessage(null)
+                        }, 3000)
                         setPersons(persons.map(person => person.id !== id ? person : response))
                         setNewName('')
                         setNewNumber('')
                     })
+                    .catch(error => {
+                        setNotificationType('error')
+                        setNotificationMessage(`Information of ${newName} has already been removed from server`)
+                        setTimeout(() => {
+                            setNotificationMessage(null)
+                          }, 3000)
+                        setPersons(persons.filter(person => person.id !== id))
+                      })
+            }
+            else {
+                console.log('Update canceled...')
             }
         }
     }
@@ -63,14 +108,21 @@ const App = () => {
             personService
                 .deleteId(id)
                 .then(response => {
+                    setNotificationType('notification')
+                    setNotificationMessage(`Deleted ${name}`)
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                      }, 3000)
                     setPersons(persons.filter(person => person.id !== id))
                     setNewName('')
                     setNewNumber('')
                 })
                 .catch(error => {
-                    alert(
-                      `${name} was already deleted from server`
-                    )
+                    setNotificationType('error')
+                    setNotificationMessage(`Information of ${newName} has already been removed from server`)
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                      }, 3000)
                     setPersons(persons.filter(person => person.id !== id))
                   })
         }
@@ -96,6 +148,8 @@ const App = () => {
     return (
         <div>
             <h2>Phonebook</h2>
+            <Notification message={notificationMessage} type={notificationType} />
+
             <Filter 
                 listFilter={listFilter}
                 handleListFilterChange={handleListFilterChange} 
