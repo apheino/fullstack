@@ -10,7 +10,7 @@ const create = newObject => {
     const request = axios.post(baseURL, newObject)
     return request.then(response => response.data)
 }
-
+ 
 const deleteId = id => {
     const request = axios.delete(`${baseURL}/${id}`)
     return request.then(response => response.data)

@@ -65,5 +65,5 @@ const OneCountry = ({country}) => {
         </div>
     )
 }
-
+ 
 export default OneCountry

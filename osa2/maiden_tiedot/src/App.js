@@ -17,7 +17,7 @@ const App = () => {
             console.log(response)
             setCountries(response.data)
         })
-    }
+    } 
       
     useEffect(hook, [])
 

@@ -8,5 +8,5 @@ const Country = ({country, buttonHandler}) => {
         </div>
     )
 } 
- 
+  
 export default Country

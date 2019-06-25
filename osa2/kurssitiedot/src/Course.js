@@ -29,7 +29,7 @@ const Header = ({name}) => {
       </div>
     )
   }
-  
+   
   const Total = ({parts}) => {
     //console.log(parts)
   

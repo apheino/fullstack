@@ -10,7 +10,7 @@ const Countries = ({countries, listFilter, buttonHandler}) => {
                 Too many matches, specify another filter
             </div>
         )
-    }
+    } 
     else if (filteredCountries.length > 1){
         return (
             <div>

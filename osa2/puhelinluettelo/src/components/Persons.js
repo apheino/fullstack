@@ -11,5 +11,5 @@ const Persons = ({persons, listFilter, deletePerson}) => {
     )
 
 }
-
+ 
 export default Persons

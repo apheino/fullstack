@@ -8,5 +8,5 @@ const Person = ({person, deletePerson}) => {
         </div>
     )
 }
-
+ 
 export default Person

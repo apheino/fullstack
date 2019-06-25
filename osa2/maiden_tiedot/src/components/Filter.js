@@ -7,6 +7,6 @@ const Filter = ({listFilter, handleListFilterChange}) => {
         </div> 
    ) 
 }
-
+ 
 export default Filter
     

@@ -30,7 +30,7 @@ const App = () => {
             id: 4
           }
         ]
-      } , 
+      } ,  
       {
         name: 'Node.js',
         parts: [

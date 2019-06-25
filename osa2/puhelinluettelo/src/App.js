@@ -96,7 +96,7 @@ const App = () => {
                           }, 3000)
                         setPersons(persons.filter(person => person.id !== id))
                       })
-            }
+            } 
             else {
                 console.log('Update canceled...')
             }

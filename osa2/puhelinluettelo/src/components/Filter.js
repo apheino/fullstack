@@ -6,7 +6,7 @@ const Filter = ({listFilter, handleListFilterChange}) => {
             filter shown with: <input value={listFilter} onChange={handleListFilterChange}/>
         </div> 
    )
-}
+} 
 
 export default Filter
     
