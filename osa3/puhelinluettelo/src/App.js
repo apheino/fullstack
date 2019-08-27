@@ -67,7 +67,16 @@ const App = () => {
                     setPersons(persons.concat(response))
                     setNewName('')
                     setNewNumber('')
-                }) 
+                })
+                .catch(error => {
+                    //console.log(error.response.data)
+                    setNotificationType('error')
+                    setNotificationMessage(`${error.response.data.error}`)
+                    setTimeout(() => {
+                        setNotificationMessage(null)
+                      }, 3000)
+                    //setPersons(persons)
+                })
         }
         else {
             if(window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)){
